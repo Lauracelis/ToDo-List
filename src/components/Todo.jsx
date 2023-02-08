@@ -56,7 +56,7 @@ const Todo = ({ title, completed, removeTodoItemProp }) => {
           className={"ui button circular icon " + (completedState ? " blue": "green")}
           onClick={handleButtonClick}
           >
-            <i className={"white check icon " + ($largestMobileScreen ? " large" : " Massive")}></i>
+            <i className="white check icon "></i>
           </button>
 
         </div>
