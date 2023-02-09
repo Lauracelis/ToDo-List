@@ -14,22 +14,22 @@ const list = [
 function App() {
   const [todoList, setTodoList] = useState(list);
 
-  //useEffect(() =>{
-    //async function fetchData(){
-      //const {data}= await todo.get("/");
-      //setTodoList(data)
-    //}
+  useEffect(() =>{
+    async function fetchData(){
+      const {data}= await todo.get("/todo");
+      setTodoList(data)
+    }
 
-    //fetchData();
-  //}, []);
+    fetchData();
+  }, []);
 
   const addTodo =async(item) => {
-    //const {data}=await todo.post("/", item);
+    const {data}=await todo.post("/todo", item);
     setTodoList((oldlist) => [...oldlist, item]);
   }
 
   const removeTodo = async(id) => {
-    //await todo.delete(`/t/${id}`);
+    await todo.delete(`/todo/${id}`);
     setTodoList ((oldlist) => oldlist.filter((item) => {
       return item.id !== id
     }));
