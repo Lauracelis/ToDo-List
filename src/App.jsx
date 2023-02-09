@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-
 import Form from "./components/Form"
 import Section from "./components/Section";
 import List from "./components/List"
+import  './App.css'
 
 const appTitle = "To Do List"
 
@@ -14,17 +14,29 @@ const list = [
 function App() {
   const [todoList, setTodoList] = useState(list);
 
-  const addTodo = (item) => {
+  //useEffect(() =>{
+    //async function fetchData(){
+      //const {data}= await todo.get("/");
+      //setTodoList(data)
+    //}
+
+    //fetchData();
+  //}, []);
+
+  const addTodo =async(item) => {
+    //const {data}=await todo.post("/", item);
     setTodoList((oldlist) => [...oldlist, item]);
   }
 
-  const removeTodo = (id) => {
+  const removeTodo = async(id) => {
+    //await todo.delete(`/t/${id}`);
     setTodoList ((oldlist) => oldlist.filter((item) => {
       return item.id !== id
     }));
   };
+
   return (
-    <div className="ui container center aligned fluid">
+    <div className="ui container center aligned fluid" id="container-section" >
       <Section>
         <h1>{appTitle}</h1>
       </Section>
@@ -39,5 +51,4 @@ function App() {
     </div>
   )
 }
-
-export default App
+export default App;

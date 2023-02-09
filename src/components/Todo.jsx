@@ -31,17 +31,18 @@ const Todo = ({ title, completed, removeTodoItemProp }) => {
   };
 
   return (
-  <div className="row">
+  <div className="row"  id="row-files">
     {
     isEditing ?
     
-        <div className="column seven wide">
-          <div className="ui input fluid">
+        <div className="column seven wide" >
+          <div className="ui input fluid teal segment" >
             <input
               onChange={handleInputOnChange}
               onKeyDown={handleInputKeyDown}
               autoFocus={true}
               value={tempValue}
+              
             />
           </div>
         </div>
@@ -53,7 +54,7 @@ const Todo = ({ title, completed, removeTodoItemProp }) => {
   
         <div className="column three wide ">
           <button 
-          className={"ui button circular icon " + (completedState ? " blue": "green")}
+          className={"ui button circular icon " + (completedState ? "teal": "olive")}
           onClick={handleButtonClick}
           >
             <i className="white check icon "></i>

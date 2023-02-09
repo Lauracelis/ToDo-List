@@ -10,7 +10,7 @@ const List = ({list, removeTodoListProp}) => {
     key={item.title} />
      );
   return (
-    <div className="ui grid center aligned">
+    <div className="ui grid center aligned" >
       {renderdList}
     </div>
   );

@@ -18,11 +18,11 @@ const Form = ({ addTodo }) => {
   };
 
   return (
-    <form className="ui form" onSubmit={handleFormSubmit}>
+    <form className="ui form" onSubmit={handleFormSubmit} >
       <div className="ui grid center aligned">
         <div className="row">
-          <div className="column five wide">
-            <input
+          <div className="column five wide" id="inputt">
+            <input 
               value={inputValue}
               onChange={handleInputChange}
               type="text"
@@ -30,7 +30,7 @@ const Form = ({ addTodo }) => {
             />
           </div>
           <div className="column one wide">
-            <button type="submit" className="ui button circular icon green">
+            <button type="submit" className="ui button circular icon" style={{background:"#95b8f6", color:"#E9FFF9"}}>
               <i className="white plus icon"></i>
             </button>
           </div>
