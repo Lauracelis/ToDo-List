@@ -1,0 +1,40 @@
+body, html{
+    width: 100%;
+    height: 100vh;
+    padding-top: 1rem;
+    
+}
+
+#container-section{
+    background-color:aliceblue;
+    border-radius: 4rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: row;
+   margin-top: 10rem;
+}
+
+#row-files{
+    background-color: rgba(127, 255, 212, 0.066);
+}
+#inputt{
+    width: 88rem;
+    height: 3rem;
+}
+
+@media(min-width:768px){
+    #container-section{
+        width: 50rem;
+    }
+}
+
+@media(min-width:992px){
+    #container-section{
+        width: 70rem;
+    }
+}
+@media(min-width:1200px){
+    #container-section{
+        width: 80rem;
+    }
+}

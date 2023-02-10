@@ -6,7 +6,6 @@ const todo = require("../models/todo");
 router.get("/", async (req, res) =>{
     try {
         const arrayTododb = await todo.find()
-        console.log(arrayTododb)
         res.json(arrayTododb)
     } catch (error) {
         console.log(result);   
