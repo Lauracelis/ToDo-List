@@ -25,13 +25,12 @@ https://github.com/Lauracelis/ToDo-List
 _SSH_ 
  
 git@github.com:Lauracelis/ 
+
 _Github CLI_ 
  
 gh repo clone Lauracelis/TODO-LIST 
  
- 
- 
- 
+
 ## Deployment 📦 
  
 -- 
