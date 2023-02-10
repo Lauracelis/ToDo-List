@@ -2,8 +2,10 @@ body, html{
     width: 100%;
     height: 100vh;
     padding-top: 1rem;
+    background: linear-gradient(to bottom right, #f7cac9, #fad2c1, #fef3bd, #c8e6c9, #b2dfdb) !important;
+    font-family: 'Nunito', sans-serif;
     
-}
+}   
 
 #container-section{
     background-color:aliceblue;

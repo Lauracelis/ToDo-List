@@ -1,24 +1,25 @@
 import React, { useState } from "react";
 
-const Todo = ({ title, completed, removeTodoItemProp }) => {
-  const [Value, setvalue] = useState(title);
+const Todo = ({ title, completed, removeTodoListProp , editTodoItemProp }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [value, setValue] = useState(title);
   const [tempValue, setTempValue] = useState(title);
-  const [completedState, setCompleted] = useState(completed)
+  const [completedState, setCompletedState] = useState(completed)
 
 
-  const handleDivDubleClick = () => {
+  const handleDivDoubleClick = () => {
     setIsEditing(true);
   };
-  const handleInputKeyDown = (e) => {
-    const key = e.keycode;
 
+  const handleInputKeyDown = (e) => {
+    const key = e.keyCode;
     if (key === 13) {
-        setvalue(tempValue)
+      editTodoItemProp({ title: tempValue });
+      setValue(tempValue);
       setIsEditing(false);
     } else if (key === 27) {
-        setTempValue(Value);
-        setIsEditing(false);
+      setTempValue(value);
+      setIsEditing(false);
     }
   };
 
@@ -26,10 +27,13 @@ const Todo = ({ title, completed, removeTodoItemProp }) => {
     setTempValue(e.target.value);
   };
 
-  const handleButtonClick = (e) => {
-    setCompleted((oldCompleted) => !oldCompleted);
-  };
-
+  const handleButtonClick = () => {
+    setCompletedState((oldCompleted) => {
+        const newState = !oldCompleted;
+        editTodoItemProp({ completed: newState });
+        return newState;
+    });
+};
   return (
   <div className="row">
     {
@@ -47,8 +51,8 @@ const Todo = ({ title, completed, removeTodoItemProp }) => {
         </div>
      : 
         <>
-        <div className="column nine wide" onDoubleClick={handleDivDubleClick}>
-          <h5 className={"ui header" + (completedState ? " green" : "")}>{Value}</h5>
+        <div className="column nine wide" onDoubleClick={handleDivDoubleClick}>
+          <h5 className={"ui header" + (completedState ? " green" : "")}>{value}</h5>
         </div>
   
         <div className="column three wide ">
@@ -63,7 +67,7 @@ const Todo = ({ title, completed, removeTodoItemProp }) => {
         <div className="column three wide">
           <button 
           className="ui button circular icon red"
-          onClick={removeTodoItemProp}>
+          onClick={removeTodoListProp}>
             <i className="large white trash alternate outline icon"></i>
           </button>
         </div>

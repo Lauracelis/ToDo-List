@@ -3,21 +3,16 @@ import Form from "./components/Form"
 import Section from "./components/Section";
 import List from "./components/List"
 import  './App.css'
-import todo from "../api/api";
+import todos from "../api/api";
 
 const appTitle = "To Do List"
 
-const list = [
-  {title: "test #1", completed: false, id: 1},
-  {title: "test #2", id: 2},
-  {title: "test #3", id: 3}
-]
 function App() {
-  const [todoList, setTodoList] = useState(list);
+  const [todoList, setTodoList] = useState([]);
 
   useEffect(() =>{
     async function fetchData(){
-      const {data}= await todo.get("/todo");
+      const {data}= await todos.get("/todos");
       setTodoList(data)
     }
 
@@ -25,17 +20,19 @@ function App() {
   }, []);
 
   const addTodo =async(item) => {
-    const {data}=await todo.post("/todo", item);
+    const {data}=await todos.post("/todos", item);
     setTodoList((oldlist) => [...oldlist, item]);
   }
 
-  const removeTodo = async(id) => {
-    await todo.delete(`/todo/${id}`);
-    setTodoList ((oldlist) => oldlist.filter((item) => {
-      return item.id !== id
-    }));
+  const removeTodo = async (id) => {
+    await todos.delete(`/todos/${id}`);
+    setTodoList((oldList) => {
+      return oldList.filter((item) => item.title !== id);
+    });
   };
-
+  const editTodo = async (id, item) => {
+    await todos.put(`/todos/${id}`, item);
+  }
   return (
     <div className="ui container center aligned fluid" id="container-section" >
       <Section>
@@ -47,7 +44,7 @@ function App() {
       </Section>
 
       <Section>
-        <List list={todoList} removeTodoListProp={removeTodo}/>
+        <List editTodoListProp={editTodo} removeTodoListProp={removeTodo} list={todoList} />
       </Section>
     </div>
   )
