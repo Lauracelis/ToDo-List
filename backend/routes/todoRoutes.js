@@ -1,6 +1,6 @@
 const express = require("express"); // importamos express
 const router = express.Router(); // creamos una instancia del enrutador de express
-const Todo = require("../models/todo"); // importamos el modelo Todo
+const Todo = require("../models.todo"); // importamos el modelo Todo
 
 // Manejador de petición GET en la ruta raíz ('/')
 router.get("/", (req, res) => {
